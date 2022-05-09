@@ -1,36 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
-
-<!-- model.name inherit form view -->
-<record id="sales_order_inherit_view_id" model="ir.ui.view">
-    <field name="name">SO Test</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-        <!-- Add your xpath here -->
-        <xpath expr="//button[@name='action_quotation_send']" position="before">
-                    <button name="mo_button"  type="object" string="Create New MO"/>
-        </xpath>
-    </field>
-</record>
-
-
-
-
-<!-- model.name action window -->
-<record id="sales_order_inherit_action" model="ir.actions.act_window">
-    <field name="name">New Sale Order</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="res_model">sale.order</field>
-    <field name="view_mode">tree,form</field>
-</record>
-
-
-<menuitem id="sales_order_inherit_menu_act" 
-name="Sales Order Test" 
-parent="sales_order_inherit_menu_root" 
-action="sales_order_inherit_action" 
-sequence="10"/>
-
-<!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    
+    <!-- mrp.bom inherit form view -->
+    <record id="inherit_view_id" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_draft']" position="after">
+                <button name="mo_button" string="Create MO" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+    
 </odoo>
